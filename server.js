@@ -1,32 +1,28 @@
-// CONNECTION WITH MONGO HAPPENS HERE
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
+const express = require('express')
+const mongoose = require('mongoose')
+const dotenv = require('dotenv')
+const bodyparser = require('body-parser')
 
-const profileRoutes = require('./routes/profileRoutes');
+const authRoutes = require('./routes/authRoutes')
+const departmentRoutes = require('./routes/departmentRoutes')
+dotenv.config()
 
-dotenv.config();
+const app = express()
+const PORT = process.env.port || 3000
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.use(bodyParser.json());
-
-app.use('/api/profiles', profileRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/dept', departmentRoutes);
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    // useCreateIndex: true,
-    // useFindAndModify: false
+    useUnifiedTopology: true
 })
     .then(() => {
-        console.log('Connected to MongoDB Atlas');
+        console.log('connection successful')
         app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
-        });
+            console.log(`Server is listening to port ${PORT}`)
+        })
     })
     .catch((error) => {
-        console.error('Connection error', error.message);
-    });
+        console.error("connection error", error.message)
+    })
