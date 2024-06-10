@@ -6,7 +6,7 @@ const bodyparser = require('body-parser')
 const authRoutes = require('./routes/authRoutes')
 const departmentRoutes = require('./routes/departmentRoutes')
 const profileRoutes = require('./routes/profileRoutes')
-const userDeptRoutes = require('./routes/userDeptRoutes');
+const userDeptRoutes = require('./routes/userDeptRoures');
 
 dotenv.config()
 
