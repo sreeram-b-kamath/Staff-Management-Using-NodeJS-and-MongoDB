@@ -13,6 +13,9 @@ dotenv.config()
 const app = express()
 const PORT = process.env.port || 3000
 
+// Middleware
+app.use(bodyparser.json());
+
 app.use('/api/auth', authRoutes);
 app.use('/api/dept', departmentRoutes);
 app.use('/api/profiles', profileRoutes);
