@@ -5,6 +5,11 @@ const departmentSchema = mongoose.Schema({
         type: Number,
         required: true,
         unique: true
+    },
+    dep_name: {
+        type: String,
+        required: true,
+        unique: true
     }
 })
 
