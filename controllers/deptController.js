@@ -1,4 +1,4 @@
-const DepartmentService = require('../services/departmentService');
+const DepartmentService = require('../services/deptService');
 
 exports.createDepartment = async (req, res) => {
     try {
